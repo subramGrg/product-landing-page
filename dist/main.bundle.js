@@ -948,13 +948,13 @@ var _reactDom = __webpack_require__(18);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _app = __webpack_require__(34);
+var _App = __webpack_require__(54);
 
-var _app2 = _interopRequireDefault(_app);
+var _App2 = _interopRequireDefault(_App);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-_reactDom2.default.render(_react2.default.createElement(_app2.default, null), document.querySelector("#app"));
+_reactDom2.default.render(_react2.default.createElement(_App2.default, null), document.querySelector("#app"));
 
 /***/ }),
 /* 15 */
@@ -18959,182 +18959,8 @@ function updateLink (link, options, obj) {
 
 
 /***/ }),
-/* 34 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(4);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _orders = __webpack_require__(35);
-
-var _orders2 = _interopRequireDefault(_orders);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var App = function (_React$Component) {
-    _inherits(App, _React$Component);
-
-    function App(props) {
-        _classCallCheck(this, App);
-
-        var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
-
-        _this.postForm = _this.postForm.bind(_this);
-        _this.orders = null;
-        // this.postForm();
-        return _this;
-    }
-
-    _createClass(App, [{
-        key: "postForm",
-        value: function postForm() {
-            var headers = new Headers({
-                "Content-Type": "application/json"
-            });
-            fetch("http://lvh.me:3000/api/v1/orders.json", {
-                method: "POST",
-                headers: headers,
-                body: JSON.stringify({ title: "example" }),
-                mode: "cors"
-            }).then(function (response) {
-                console.log(response.json());
-            });
-        }
-    }, {
-        key: "render",
-        value: function render() {
-            return _react2.default.createElement(_orders2.default, null);
-        }
-    }]);
-
-    return App;
-}(_react2.default.Component);
-
-exports.default = App;
-
-/***/ }),
-/* 35 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(4);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _OrderItem = __webpack_require__(36);
-
-var _OrderItem2 = _interopRequireDefault(_OrderItem);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var Orders = function (_React$Component) {
-    _inherits(Orders, _React$Component);
-
-    function Orders(props) {
-        _classCallCheck(this, Orders);
-
-        var _this = _possibleConstructorReturn(this, (Orders.__proto__ || Object.getPrototypeOf(Orders)).call(this, props));
-
-        _this.api = "http://lvh.me:3000/api/v1/orders.json";
-        _this.getOrders = _this.getOrders.bind(_this);
-        _this.state = { orders: [], mounted: false };
-
-        _this.changeStatus = _this.changeStatus.bind(_this);
-        return _this;
-    }
-
-    _createClass(Orders, [{
-        key: "getOrders",
-        value: async function getOrders() {
-            // await response of fetch call
-            var response = await fetch(this.api);
-            // only proceed once promise is resolved
-            var data = await response.json();
-            this.setState({ orders: data }); // then, call render()
-        }
-    }, {
-        key: "changeStatus",
-        value: function changeStatus() {}
-    }, {
-        key: "componentDidMount",
-        value: function componentDidMount() {
-            this.getOrders();
-        }
-    }, {
-        key: "render",
-        value: function render() {
-            var _this2 = this;
-
-            var items = "";
-            if (this.state.orders.length > 0) {
-                items = this.state.orders.map(function (item) {
-                    return _react2.default.createElement(_OrderItem2.default, { key: item.order_number,
-                        agency: item.agency,
-                        orderNumber: item.order_number,
-                        products: item.products,
-                        status: _this2.changeStatus });
-                });
-            } else {
-                items = "Loading";
-            }
-
-            return _react2.default.createElement(
-                "div",
-                null,
-                _react2.default.createElement(
-                    "div",
-                    { className: "header-wrapper" },
-                    _react2.default.createElement(
-                        "h1",
-                        { className: "main-heading container" },
-                        "Orders"
-                    )
-                ),
-                _react2.default.createElement(
-                    "div",
-                    { className: "container" },
-                    items
-                )
-            );
-        }
-    }]);
-
-    return Orders;
-}(_react2.default.Component);
-
-exports.default = Orders;
-
-/***/ }),
+/* 34 */,
+/* 35 */,
 /* 36 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -19149,9 +18975,9 @@ var _react = __webpack_require__(4);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _modal = __webpack_require__(37);
+var _ProductOptions = __webpack_require__(55);
 
-var _modal2 = _interopRequireDefault(_modal);
+var _ProductOptions2 = _interopRequireDefault(_ProductOptions);
 
 var _OrderItem = __webpack_require__(51);
 
@@ -19199,7 +19025,7 @@ var item = function item(props) {
                     "div",
                     { className: "options" },
                     image,
-                    _react2.default.createElement(_modal2.default, { status: item.status,
+                    _react2.default.createElement(_ProductOptions2.default, { status: item.status,
                         item: item })
                 )
             )
@@ -19235,213 +19061,7 @@ var item = function item(props) {
 exports.default = item;
 
 /***/ }),
-/* 37 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(4);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactModal = __webpack_require__(38);
-
-var _reactModal2 = _interopRequireDefault(_reactModal);
-
-var _Modal = __webpack_require__(48);
-
-var _Modal2 = _interopRequireDefault(_Modal);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var ModalStatus = function (_React$Component) {
-    _inherits(ModalStatus, _React$Component);
-
-    function ModalStatus(props) {
-        _classCallCheck(this, ModalStatus);
-
-        var _this = _possibleConstructorReturn(this, (ModalStatus.__proto__ || Object.getPrototypeOf(ModalStatus)).call(this, props));
-
-        _this.bool = false;
-        _this.openModal = _this.openModal.bind(_this);
-        _this.closeModal = _this.closeModal.bind(_this);
-        _this.submitForm = _this.submitForm.bind(_this);
-
-        _this.state = {
-            bool: false,
-            status: _this.props.status
-        };
-        return _this;
-    }
-
-    _createClass(ModalStatus, [{
-        key: "componentWillMount",
-        value: function componentWillMount() {
-            _reactModal2.default.setAppElement("body");
-        }
-    }, {
-        key: "closeModal",
-        value: function closeModal() {
-            this.setState({
-                bool: false
-            });
-        }
-    }, {
-        key: "openModal",
-        value: function openModal() {
-            this.setState({
-                bool: true
-            });
-        }
-    }, {
-        key: "submitForm",
-        value: function submitForm(e) {
-            var _this2 = this;
-
-            e.preventDefault();
-
-            var form = document.forms.edit_product;
-            var formData = new FormData(form);
-            var productId = formData.get("product[id]");
-            var api = "http://lvh.me:3000/api/v1/products/" + productId + ".json";
-            var param = {
-                status: formData.get("product[status]")
-            };
-
-            fetch(api, {
-                method: "PUT",
-                body: JSON.stringify(param),
-                headers: new Headers({
-                    "Content-Type": "application/json"
-                })
-            }).then(function (response) {
-                if (response.status === 200) {
-                    _this2.setState({
-                        bool: false,
-                        status: param.status
-                    });
-                }
-            });
-        }
-    }, {
-        key: "render",
-        value: function render() {
-            var _props = this.props,
-                id = _props.id,
-                item = _props.item;
-            var status = this.state.status;
-
-
-            return _react2.default.createElement(
-                "span",
-                { className: "product-status" },
-                _react2.default.createElement(
-                    _reactModal2.default,
-                    {
-                        isOpen: this.state.bool,
-                        className: "product-modal" },
-                    _react2.default.createElement(
-                        "div",
-                        { className: "modal-wrapper" },
-                        _react2.default.createElement(
-                            "button",
-                            { onClick: this.closeModal },
-                            "X"
-                        ),
-                        _react2.default.createElement(
-                            "div",
-                            { className: "modal-status" },
-                            "Status:",
-                            _react2.default.createElement("span", {
-                                className: "indicator " + status })
-                        ),
-                        _react2.default.createElement(
-                            "label",
-                            null,
-                            "Product: ",
-                            item.name
-                        ),
-                        _react2.default.createElement(
-                            "form",
-                            {
-                                id: "edit_product",
-                                action: "",
-                                onSubmit: this.submitForm },
-                            _react2.default.createElement("input", {
-                                name: "_method",
-                                type: "hidden",
-                                value: "put" }),
-                            _react2.default.createElement("input", {
-                                name: "product[id]",
-                                type: "hidden",
-                                value: item.id }),
-                            _react2.default.createElement(
-                                "fieldset",
-                                null,
-                                _react2.default.createElement(
-                                    "p",
-                                    null,
-                                    "Status:"
-                                ),
-                                _react2.default.createElement(
-                                    "label",
-                                    null,
-                                    "Printed:",
-                                    _react2.default.createElement("input", { type: "radio",
-                                        name: "product[status]",
-                                        value: "printed" })
-                                ),
-                                _react2.default.createElement(
-                                    "label",
-                                    null,
-                                    "Approved:",
-                                    _react2.default.createElement("input", { type: "radio",
-                                        name: "product[status]",
-                                        value: "approved" })
-                                )
-                            ),
-                            _react2.default.createElement("input", { type: "submit", value: "submit" })
-                        )
-                    )
-                ),
-                _react2.default.createElement(
-                    "a",
-                    { id: "change-status",
-                        href: "#",
-                        onClick: this.openModal },
-                    "Change Status"
-                ),
-                " \xA0|\xA0",
-                _react2.default.createElement(
-                    "span",
-                    { className: "product-detail " + status },
-                    status
-                )
-            );
-        }
-    }]);
-
-    return ModalStatus;
-}(_react2.default.Component);
-
-;
-
-exports.default = ModalStatus;
-
-/***/ }),
+/* 37 */,
 /* 38 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -21105,7 +20725,7 @@ exports = module.exports = __webpack_require__(32)(false);
 
 
 // module
-exports.push([module.i, ".product-detail {\n  text-transform: capitalize; }\n  .product-detail.approved {\n    color: #ecc67e; }\n  .product-detail.printed {\n    color: #c3c2ff; }\n  .product-detail.pending {\n    color: #C52F24; }\n\n.modal {\n  display: none; }\n\n.modal-status {\n  display: flex;\n  align-items: center; }\n  .modal-status .approved {\n    background: #ecc67e; }\n  .modal-status .printed {\n    background: #c3c2ff; }\n  .modal-status .pending {\n    background: #C52F24; }\n  .modal-status .indicator {\n    display: inline-block;\n    width: 20px;\n    height: 20px;\n    border-radius: 10px;\n    border: 1px solid #4c864c;\n    margin-left: 10px; }\n\n.product-modal {\n  display: -ms-flexbox;\n  display: -webkit-flex;\n  display: flex;\n  height: 100%;\n  -ms-flex-align: center;\n  -webkit-align-items: center;\n  -webkit-box-align: center;\n  align-items: center; }\n  .product-modal .modal-wrapper {\n    width: 200px;\n    height: 200px;\n    margin: 0 auto;\n    position: relative;\n    background: #fff;\n    padding: 10px;\n    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12); }\n    .product-modal .modal-wrapper button {\n      background: silver;\n      position: absolute;\n      bottom: 100%;\n      right: 0;\n      cursor: pointer; }\n", ""]);
+exports.push([module.i, "@keyframes spin {\n  0% {\n    transform: rotate(0deg); }\n  100% {\n    transform: rotate(360deg); } }\n\n.product-detail {\n  text-transform: capitalize; }\n  .product-detail.approved {\n    color: #ecc67e; }\n  .product-detail.printed {\n    color: #c3c2ff; }\n  .product-detail.pending {\n    color: #C52F24; }\n\n.modal {\n  display: none; }\n\n.modal-status {\n  display: -ms-flexbox;\n  display: -webkit-flex;\n  display: flex;\n  align-items: center;\n  margin: 12px 0; }\n  .modal-status .approved {\n    background: #ecc67e; }\n  .modal-status .printed {\n    background: #c3c2ff; }\n  .modal-status .pending {\n    background: #C52F24; }\n  .modal-status .indicator {\n    display: inline-block;\n    width: 20px;\n    height: 20px;\n    border-radius: 10px;\n    border: 1px solid #4c864c;\n    margin-left: 10px; }\n\n.product-modal {\n  display: -ms-flexbox;\n  display: -webkit-flex;\n  display: flex;\n  height: 100%;\n  -ms-flex-align: center;\n  -webkit-align-items: center;\n  -webkit-box-align: center;\n  align-items: center; }\n  .product-modal .modal-wrapper {\n    width: 300px;\n    height: 200px;\n    margin: 0 auto;\n    position: relative;\n    background: #fff;\n    padding: 10px;\n    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12); }\n    .product-modal .modal-wrapper button {\n      background: silver;\n      position: absolute;\n      bottom: 100%;\n      right: 0;\n      cursor: pointer; }\n\n.modal-wrapper fieldset {\n  padding: 10px;\n  margin-bottom: 20px; }\n  .modal-wrapper fieldset p {\n    margin: 0 0 14px; }\n  .modal-wrapper fieldset label {\n    margin-right: 10px; }\n\ninput[type=submit] {\n  padding: 5px 15px;\n  background: #413a48;\n  border: 1px solid #000;\n  color: #fff;\n  cursor: pointer;\n  -webkit-border-radius: 5px;\n  border-radius: 5px;\n  text-transform: capitalize; }\n\n.modal-overlay {\n  position: fixed;\n  top: 0px;\n  left: 0px;\n  right: 0px;\n  bottom: 0px;\n  background-color: rgba(0, 0, 0, 0.7); }\n\nbody.ReactModal__Body--open {\n  overflow: hidden; }\n", ""]);
 
 // exports
 
@@ -21245,10 +20865,468 @@ exports = module.exports = __webpack_require__(32)(false);
 
 
 // module
-exports.push([module.i, "body {\n  font-family: sans-serif, serif, Arial; }\n\nbody,\nh1,\nh2 {\n  margin: 0; }\n\n.container {\n  max-width: 1080px;\n  margin: 0 auto;\n  padding: 0 20px; }\n\n.header-wrapper {\n  padding: 30px 0;\n  border-bottom: 2px solid #e2e2e3; }\n\n.orders-wrapper {\n  margin-top: 30px;\n  border: 2px solid #e2e2e3; }\n  .orders-wrapper h2 {\n    font-size: 18px;\n    padding: 10px;\n    border-bottom: 2px solid #e2e2e3; }\n\n.order-list {\n  list-style: none;\n  margin: 0;\n  padding: 10px;\n  font-size: 16px; }\n  .order-list .options-wrapper {\n    display: flex;\n    justify-content: space-between; }\n  .order-list .product {\n    margin-bottom: 6px; }\n", ""]);
+exports.push([module.i, "body {\n  font-family: sans-serif, serif, Arial; }\n\nbody,\nh1,\nh2 {\n  margin: 0; }\n\n.container {\n  max-width: 1080px;\n  margin: 0 auto;\n  padding: 0 20px; }\n\n.header-wrapper {\n  padding: 30px 0;\n  border-bottom: 2px solid #e2e2e3; }\n\n.orders-wrapper {\n  margin-top: 30px;\n  border: 2px solid #e2e2e3; }\n  .orders-wrapper h2 {\n    font-size: 18px;\n    padding: 10px;\n    border-bottom: 2px solid #e2e2e3; }\n\n.order-list {\n  list-style: none;\n  margin: 0;\n  padding: 10px;\n  font-size: 16px; }\n  .order-list .options-wrapper {\n    display: -ms-flexbox;\n    display: -webkit-flex;\n    display: flex;\n    justify-content: space-between; }\n  .order-list .product {\n    margin-bottom: 6px; }\n\n.loading {\n  text-align: center;\n  font-size: 22px;\n  height: 200px;\n  display: -ms-flexbox;\n  display: -webkit-flex;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  flex-direction: column; }\n  .loading .loader {\n    margin-top: 10px;\n    display: block;\n    border: 4px solid #f3f3f3;\n    /* Light grey */\n    border-top: 4px solid #3498db;\n    /* Blue */\n    border-radius: 50%;\n    width: 20px;\n    height: 20px;\n    animation: spin 2s linear infinite; }\n", ""]);
 
 // exports
 
+
+/***/ }),
+/* 53 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(4);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _OrderItem = __webpack_require__(36);
+
+var _OrderItem2 = _interopRequireDefault(_OrderItem);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Orders = function (_React$Component) {
+    _inherits(Orders, _React$Component);
+
+    function Orders(props) {
+        _classCallCheck(this, Orders);
+
+        var _this = _possibleConstructorReturn(this, (Orders.__proto__ || Object.getPrototypeOf(Orders)).call(this, props));
+
+        _this.api = "https://online-products-api.herokuapp.com/api/v1/orders.json";
+        _this.getOrders = _this.getOrders.bind(_this);
+        _this.state = { orders: [], mounted: false };
+
+        _this.changeStatus = _this.changeStatus.bind(_this);
+        return _this;
+    }
+
+    _createClass(Orders, [{
+        key: "getOrders",
+        value: async function getOrders() {
+            // await response of fetch call
+            var response = await fetch(this.api);
+            // only proceed once promise is resolved
+            var data = await response.json();
+            this.setState({ orders: data }); // then, call render()
+        }
+    }, {
+        key: "changeStatus",
+        value: function changeStatus() {}
+    }, {
+        key: "componentDidMount",
+        value: function componentDidMount() {
+            this.getOrders();
+        }
+    }, {
+        key: "render",
+        value: function render() {
+            var _this2 = this;
+
+            var items = "";
+            if (this.state.orders.length > 0) {
+                items = this.state.orders.map(function (item) {
+                    return _react2.default.createElement(_OrderItem2.default, { key: item.order_number,
+                        agency: item.agency,
+                        orderNumber: item.order_number,
+                        products: item.products,
+                        status: _this2.changeStatus });
+                });
+            } else {
+                items = _react2.default.createElement(
+                    "div",
+                    { className: "loading" },
+                    "Loading",
+                    _react2.default.createElement("span", { className: "loader" })
+                );
+            }
+
+            return _react2.default.createElement(
+                "div",
+                null,
+                _react2.default.createElement(
+                    "div",
+                    { className: "header-wrapper" },
+                    _react2.default.createElement(
+                        "h1",
+                        { className: "main-heading container" },
+                        "Orders"
+                    )
+                ),
+                _react2.default.createElement(
+                    "div",
+                    { className: "container" },
+                    items
+                )
+            );
+        }
+    }]);
+
+    return Orders;
+}(_react2.default.Component);
+
+exports.default = Orders;
+
+/***/ }),
+/* 54 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(4);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _Orders = __webpack_require__(53);
+
+var _Orders2 = _interopRequireDefault(_Orders);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var App = function (_React$Component) {
+    _inherits(App, _React$Component);
+
+    function App(props) {
+        _classCallCheck(this, App);
+
+        var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
+
+        _this.postForm = _this.postForm.bind(_this);
+        _this.orders = null;
+        // this.postForm();
+        return _this;
+    }
+
+    _createClass(App, [{
+        key: "postForm",
+        value: function postForm() {
+            var headers = new Headers({
+                "Content-Type": "application/json"
+            });
+            fetch("http://lvh.me:3000/api/v1/orders.json", {
+                method: "POST",
+                headers: headers,
+                body: JSON.stringify({ title: "example" }),
+                mode: "cors"
+            }).then(function (response) {
+                console.log(response.json());
+            });
+        }
+    }, {
+        key: "render",
+        value: function render() {
+            return _react2.default.createElement(_Orders2.default, null);
+        }
+    }]);
+
+    return App;
+}(_react2.default.Component);
+
+exports.default = App;
+
+/***/ }),
+/* 55 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(4);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _Modal = __webpack_require__(56);
+
+var _Modal2 = _interopRequireDefault(_Modal);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var ModalStatus = function (_React$Component) {
+    _inherits(ModalStatus, _React$Component);
+
+    function ModalStatus(props) {
+        _classCallCheck(this, ModalStatus);
+
+        var _this = _possibleConstructorReturn(this, (ModalStatus.__proto__ || Object.getPrototypeOf(ModalStatus)).call(this, props));
+
+        _this.bool = false;
+        _this.openModal = _this.openModal.bind(_this);
+        _this.closeModal = _this.closeModal.bind(_this);
+        _this.submitForm = _this.submitForm.bind(_this);
+
+        _this.state = {
+            bool: false,
+            status: _this.props.status
+        };
+        return _this;
+    }
+
+    _createClass(ModalStatus, [{
+        key: "closeModal",
+        value: function closeModal() {
+            this.setState({
+                bool: false
+            });
+        }
+    }, {
+        key: "openModal",
+        value: function openModal() {
+            this.setState({
+                bool: true
+            });
+        }
+    }, {
+        key: "submitForm",
+        value: function submitForm(e) {
+            var _this2 = this;
+
+            e.preventDefault();
+
+            var form = document.forms.edit_product;
+            var formData = new FormData(form);
+            var productId = formData.get("product[id]");
+            var api = "https://online-products-api.herokuapp.com/api/v1/products/" + productId + ".json";
+            var param = {
+                status: formData.get("product[status]")
+            };
+
+            fetch(api, {
+                method: "PUT",
+                body: JSON.stringify(param),
+                headers: new Headers({
+                    "Content-Type": "application/json"
+                })
+            }).then(function (response) {
+                if (response.status === 200) {
+                    _this2.setState({
+                        bool: false,
+                        status: param.status
+                    });
+                }
+            });
+        }
+    }, {
+        key: "render",
+        value: function render() {
+            var _props = this.props,
+                id = _props.id,
+                item = _props.item;
+            var _state = this.state,
+                status = _state.status,
+                bool = _state.bool;
+
+
+            return _react2.default.createElement(
+                "span",
+                { className: "product-status" },
+                _react2.default.createElement(_Modal2.default, {
+                    bool: bool,
+                    closeModal: this.closeModal,
+                    name: item.name,
+                    status: status,
+                    id: item.id,
+                    submitForm: this.submitForm }),
+                _react2.default.createElement(
+                    "a",
+                    { id: "change-status",
+                        href: "#",
+                        onClick: this.openModal },
+                    "Change Status"
+                ),
+                " \xA0|\xA0",
+                _react2.default.createElement(
+                    "span",
+                    { className: "product-detail " + status },
+                    status
+                )
+            );
+        }
+    }]);
+
+    return ModalStatus;
+}(_react2.default.Component);
+
+;
+
+exports.default = ModalStatus;
+
+/***/ }),
+/* 56 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(4);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactModal = __webpack_require__(38);
+
+var _reactModal2 = _interopRequireDefault(_reactModal);
+
+var _Modal = __webpack_require__(48);
+
+var _Modal2 = _interopRequireDefault(_Modal);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var ModalForm = function (_React$Component) {
+    _inherits(ModalForm, _React$Component);
+
+    function ModalForm() {
+        _classCallCheck(this, ModalForm);
+
+        return _possibleConstructorReturn(this, (ModalForm.__proto__ || Object.getPrototypeOf(ModalForm)).apply(this, arguments));
+    }
+
+    _createClass(ModalForm, [{
+        key: "componentWillMount",
+        value: function componentWillMount() {
+            _reactModal2.default.setAppElement("body");
+        }
+    }, {
+        key: "render",
+        value: function render() {
+            var _props = this.props,
+                bool = _props.bool,
+                closeModal = _props.closeModal,
+                name = _props.name,
+                id = _props.id,
+                submitForm = _props.submitForm,
+                status = _props.status;
+
+
+            return _react2.default.createElement(
+                _reactModal2.default,
+                {
+                    isOpen: bool,
+                    className: "product-modal",
+                    overlayClassName: "modal-overlay" },
+                _react2.default.createElement(
+                    "div",
+                    { className: "modal-wrapper" },
+                    _react2.default.createElement(
+                        "button",
+                        { onClick: closeModal },
+                        "X"
+                    ),
+                    _react2.default.createElement(
+                        "label",
+                        null,
+                        "Product: ",
+                        name
+                    ),
+                    _react2.default.createElement(
+                        "div",
+                        { className: "modal-status" },
+                        "Status:",
+                        _react2.default.createElement("span", {
+                            className: "indicator " + status })
+                    ),
+                    _react2.default.createElement(
+                        "form",
+                        {
+                            id: "edit_product",
+                            action: "",
+                            onSubmit: submitForm },
+                        _react2.default.createElement("input", {
+                            name: "_method",
+                            type: "hidden",
+                            value: "put" }),
+                        _react2.default.createElement("input", {
+                            name: "product[id]",
+                            type: "hidden",
+                            value: id }),
+                        _react2.default.createElement(
+                            "fieldset",
+                            null,
+                            _react2.default.createElement(
+                                "p",
+                                null,
+                                "Status:"
+                            ),
+                            _react2.default.createElement(
+                                "label",
+                                null,
+                                "Printed:",
+                                _react2.default.createElement("input", { type: "radio",
+                                    name: "product[status]",
+                                    value: "printed" })
+                            ),
+                            _react2.default.createElement(
+                                "label",
+                                null,
+                                "Approved:",
+                                _react2.default.createElement("input", { type: "radio",
+                                    name: "product[status]",
+                                    value: "approved" })
+                            )
+                        ),
+                        _react2.default.createElement("input", { type: "submit", value: "submit" })
+                    )
+                )
+            );
+        }
+    }]);
+
+    return ModalForm;
+}(_react2.default.Component);
+
+;
+
+exports.default = ModalForm;
 
 /***/ })
 /******/ ]);

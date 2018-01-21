@@ -1,3 +1,8 @@
 $orange: #ecc67e;
 $purple: #c3c2ff;
 $red: #C52F24;
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

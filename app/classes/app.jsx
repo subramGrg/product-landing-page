@@ -1,5 +1,5 @@
 import React from "react";
-import Orders from "./orders.jsx";
+import Orders from "./Orders.jsx";
 
 class App extends React.Component {
     constructor(props) {

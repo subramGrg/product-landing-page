@@ -1,5 +1,5 @@
 import React from "react";
-import ModalStatus from "./modal.jsx";
+import ProductOptions from "./ProductOptions.jsx";
 import style from "../styles/OrderItem.scss";
 
 const item = (props) => {
@@ -35,7 +35,7 @@ const item = (props) => {
                     <div className='options'>
                         {image}
 
-                        <ModalStatus status={item.status}
+                        <ProductOptions status={item.status}
                             item={item}/>
                     </div>
                 </div>

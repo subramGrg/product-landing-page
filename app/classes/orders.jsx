@@ -5,7 +5,7 @@ class Orders extends React.Component {
     constructor(props) {
         super(props);
 
-        this.api = "http://lvh.me:3000/api/v1/orders.json";
+        this.api = "https://online-products-api.herokuapp.com/api/v1/orders.json";
         this.getOrders = this.getOrders.bind(this);
         this.state = { orders: [], mounted: false, };
 
@@ -17,7 +17,7 @@ class Orders extends React.Component {
         const response = await fetch(this.api);
         // only proceed once promise is resolved
         const data = await response.json();
-        this.setState({ orders: data }); // then, call render()
+        this.setState({ orders: data, }); // then, call render()
     }
 
     changeStatus() {
@@ -39,7 +39,10 @@ class Orders extends React.Component {
                                 status={this.changeStatus} />
             );
         } else {
-            items = "Loading";
+            items = <div className="loading">
+                        Loading
+                        <span className="loader"></span>
+                    </div>;
         }
 
         return(
