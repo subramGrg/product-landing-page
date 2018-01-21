@@ -20938,9 +20938,10 @@ var Orders = function (_React$Component) {
             var _this2 = this;
 
             var items = "";
+
             if (this.state.orders.length > 0) {
-                items = this.state.orders.map(function (item) {
-                    return _react2.default.createElement(_OrderItem2.default, { key: item.order_number,
+                items = this.state.orders.map(function (item, index) {
+                    return _react2.default.createElement(_OrderItem2.default, { key: index,
                         agency: item.agency,
                         orderNumber: item.order_number,
                         products: item.products,

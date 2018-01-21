@@ -30,9 +30,10 @@ class Orders extends React.Component {
 
     render() {
         let items = "";
+
         if(this.state.orders.length > 0) {
             items = this.state.orders.map(
-                item => <OrderItem key={item.order_number}
+                (item, index) => <OrderItem key={index}
                                 agency={item.agency}
                                 orderNumber={item.order_number}
                                 products={item.products}
