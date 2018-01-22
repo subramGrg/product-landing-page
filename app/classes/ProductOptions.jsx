@@ -32,11 +32,11 @@ class ModalStatus extends React.Component {
         e.preventDefault();
 
         const form = document.forms.edit_product;
-        const formData = new FormData(form);
-        const productId = formData.get("product[id]");
+        const productId = form.elements
+                            .namedItem("product[id]").value;
         const api = `https://online-products-api.herokuapp.com/api/v1/products/${productId}.json`;
         const param = {
-            status: formData.get("product[status]"),
+            status: form.elements.namedItem("product[status]").value,
         };
 
         fetch(
