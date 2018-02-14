@@ -1,3 +1,6 @@
+![](https://img.shields.io/badge/react-v16.1.1-red.svg)
+![](https://img.shields.io/badge/express-4.16.2-yellowgreen.svg)
+
 ## Welcome
 
 A simple platform where a user can view their orders.
